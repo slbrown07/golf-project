@@ -1,0 +1,30 @@
+{	
+	"selectedCourseName": "Technology",
+	"classes":[
+		
+        {"classname": "Javascript", "levels":[
+
+            {"type": "Advanced", "teacher": "Chris Brewer", "schedule": "W,TH 6-8pm"},
+            {"type": "Regular", "teacher": "Trent Ross", "schedule": "T,F 5-7pm"}
+
+        ]},
+        {"classname": "CSS", "levels":[
+
+            {"type": "Advanced", "teacher": "Shelly Anderson", "schedule": "T,TH 6-8pm"},
+            {"type": "Regular", "teacher": "Duke Leonard", "schedule": "M,W 5-7pm"}
+
+        ]},
+        {"classname": "Computer Hardware", "levels":[
+
+           {"type": "Advanced", "teacher": "Bob Allen", "schedule": "T,TH 6-8pm"},
+           {"type": "Regular", "teacher": "John Billington", "schedule": "M,W 5-7pm"}
+
+        ]},
+        {"classname": "Bash & IDE", "levels":[
+
+           {"type": "Advanced", "teacher": "Cash McCoy", "schedule": "T,W 6-8pm"},
+           {"type": "Regular", "teacher": "Jack Black", "schedule": "M,TH 5-7pm"}
+
+        ]}
+    ]
+}

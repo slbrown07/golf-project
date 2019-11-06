@@ -1,0 +1,33 @@
+{
+	"selectedCourseName": "Science",
+	"classes":[
+        {"classname": "Herpetology", "levels":[
+
+            {"type": "Advanced", "teacher": "Angela Brown", "schedule": "T,TH 6-8pm"},
+            {"type": "Regular", "teacher": "Bob Miller", "schedule": "M,W 5-7pm"},
+            {"type": "Beginner", "teacher": "Jake Dempsey", "schedule": "F 7-9pm"}
+
+        ]},
+        {"classname": "Biology", "levels":[
+
+            {"type": "Advanced", "teacher": "Shelly Anderson", "schedule": "T,TH 6-8pm"},
+            {"type": "Regular", "teacher": "Duke Leonard", "schedule": "M,W 5-7pm"},
+            {"type": "Beginner", "teacher": "Cliff Billington", "schedule": "F 7-9pm"}
+
+        ]},
+        {"classname": "Microscope Studies", "levels":[
+
+           {"type": "Advanced", "teacher": "Ray Allen", "schedule": "T,TH 6-8pm"},
+           {"type": "Regular", "teacher": "Cliff Billington", "schedule": "M,W 5-7pm"},
+           {"type": "Beginner", "teacher": "D Mitchell", "schedule": "F 7-9pm"}
+
+        ]},
+        {"classname": "Astronomy", "levels":[
+
+           {"type": "Advanced", "teacher": "Forrest Stumped", "schedule": "T,TH 6-8pm"},
+           {"type": "Regular", "teacher": "Gill Black", "schedule": "M,W 5-7pm"},
+           {"type": "Beginner", "teacher": "Lloyd Durden", "schedule": "F 7-9pm"}
+
+        ]}
+    ]
+}
