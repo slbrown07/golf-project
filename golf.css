@@ -1,4 +1,44 @@
-#rowHeading {
+#scoreCard {
+    border: 2px solid gray;
+    width: 100%;
+    margin: 10px;
+    padding: 10px;
+    position: relative;
+}
+
+#courseInfo {
+    text-align: center;
+}
+
+#golfCourses {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+figure {
+    width: 100%;
+}
+
+img {
+    border: 2px solid #000000;
+    border-radius: 5px;
+    height: 250px;
+    overflow: hidden;
+}
+
+#playerLevels {
+    display: flex;
+    flex-direction: column;
+}
+
+#proLevel {
+    display: flex;
+    flex-direction: row;
+}
+
+#rowHeaders {
     position: relative;
     display: flex;
     flex-direction: row;
@@ -8,6 +48,6 @@
 #levelOptions {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
 
 }
