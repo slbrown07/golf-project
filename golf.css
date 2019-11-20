@@ -33,7 +33,7 @@ img {
     flex-direction: column;
 }
 
-#proLevel {
+.scoreRow {
     display: flex;
     flex-direction: row;
 }
