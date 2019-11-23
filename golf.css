@@ -1,21 +1,4 @@
-#scoreCard {
-    border: 2px solid gray;
-    width: 100%;
-    margin: 10px;
-    padding: 10px;
-    position: relative;
-}
-
-#courseInfo {
-    text-align: center;
-}
-
-#golfCourses {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-}
+/* Element Tags */
 
 figure {
     width: 100%;
@@ -28,26 +11,57 @@ img {
     overflow: hidden;
 }
 
-#playerLevels {
-    display: flex;
-    flex-direction: column;
+/* Class Tags */
+.col {
+    width: 70px;
 }
-
+.name {
+    width: 150px;
+}
 .scoreRow {
     display: flex;
     flex-direction: row;
 }
 
+/* ID Tags */
+
+#cardOptions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#courseInfo {
+    text-align: center;
+}
+#golfCourses {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+#playerLevels {
+    display: flex;
+    flex-direction: column;
+}
 #rowHeaders {
     position: relative;
     display: flex;
     flex-direction: row;
     width: 100%;
 }
-
-#levelOptions {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-
+#scoreCard {
+    border: 2px solid gray;
+    width: 100%;
+    margin: 10px;
+    padding: 10px;
+    position: relative;
 }
+
+
+
+
+
+
+
+
+

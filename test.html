@@ -5,11 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>test document</title>
-    <link rel="stylesheet" href="test.css">
     <script defer src="test.js"></script>
 </head>
 <body>
-    <input type="checkbox" value="pro" id="checkTest"> This is a test
-    
+    <header>
+        <h1>Golf Project</h1>
+        <h2 id="gameDate">Date: </h2>
+        <div id="golfCourses"></div>
+    </header>
+    <div id="scoreCard">
+        <div id="courseInfo">
+            <div id="courseName"></div>
+            <div id="courseAddress"></div>
+            <div id="courseCity"></div>
+            <div id="coursePhone"></div>
+        </div>
+        <div id="cardOptions">
+            <div id="pro" onclick="rowDisplay('pro')"><i class="far fa-circle"></i> Pro</div>
+            <div id="champ" onclick="rowDisplay('champ')"><i class="far fa-circle"></i> Champion</div>
+            <div id="men" onclick="rowDisplay('men')"><i class="far fa-circle"></i> Men</div>
+            <div id="women" onclick="rowDisplay('women')"><i class="far fa-circle"></i> Women</div>
+            <div id="hcp" onclick="rowDisplay('hcp')"><i class="far fa-circle"></i> HCP</div>
+        </div>
+        <div class="scoreRow" id="colHead"></div>
+        <div id="playerLevels">
+            <div class="scoreRow" id="proRow">
+                <div class="desc">Pro</div>
+            </div>
+            <div class="scoreRow" id="championRow">
+                <div class="desc">Champion</div>
+            </div>
+            <div class="scoreRow" id="menRow">
+                <div class="desc">Men</div>
+            </div>
+            <div class="scoreRow" id="womenRow">
+                <div class="desc">Women</div>
+            </div>
+            <div class="scoreRow" id="hcpRow">
+                <div class="desc">Handicap</div>
+            </div>
+            <div class="scoreRow" id="parRow">
+                <div class="desc">Par</div>
+            </div>
+        </div>       
+    </div>
 </body>
 </html>
