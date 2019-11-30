@@ -1,12 +1,4 @@
-let numPlayers;
-let numHoles = 18;
 let myDate = new Date();
-let levelDisplay = {
-    pro: 'no', 
-    champ: 'no', 
-    men: 'yes',
-    women: 'no'
-};
 
 class GolfCourse {
     constructor() {
@@ -17,6 +9,43 @@ class GolfCourse {
         this.hcp = [];
         this.par = [];
     }
+
+    addHeadings() {
+        document.getElementById(`nameRow`).innerHTML = `<div id="headCol">Name</div>`;
+        for (let i=0; i<9; i++) {
+            document.getElementById(`nameRow`).innerHTML += `<div id="hole${i+1}Col">Hole ${i+1}</div>`; 
+        }
+        document.getElementById(`nameRow`).innerHTML += `<div id="outCol">Out Total</div>`;     
+        for (let i=9; i<18; i++) {
+            document.getElementById(`nameRow`).innerHTML += `<div id="hole${i+1}Col">Hole ${i+1}</div>`; 
+        }
+        document.getElementById(`nameRow`).innerHTML += `<div id="inCol">In Total</div>`;  
+        document.getElementById(`nameRow`).innerHTML += `<div id="totalCol">Total</div>`;  
+    }
+}
+
+class GolfPlayer {
+    constructor(name) {
+        this.player = '';
+        this.score = [];
+        this.inScore = 0;
+        this.outScore = 0;
+        this.totalScore = 0;
+    }
+
+    addScore(score) {
+        this.score.push(score);
+        this.totalScore += score;
+        if (this.score.length < 9) {
+            this.inScore += score;
+        } else {
+            this.outScore += score;
+        }
+    }
+
+    addPlayer(name) {
+        this.player = name;
+    }
 }
 
 (function(){
@@ -25,12 +54,32 @@ class GolfCourse {
     
 })();
 
+function addRow(name, array) {
+    let inTotal = 0;
+    let outTotal = 0;
+    let grandTotal = 0;
+    document.getElementById(`${name}Row`).innerHTML = `<div id="headCol">${name.toUpperCase()}</div>`;
+    for (let i=0; i<9 && i<array.length; i++) {
+        document.getElementById(`${name}Row`).innerHTML += `<div id="holeCol">${array[i]}</div>`;
+        outTotal += array[i]; 
+        grandTotal += array[i];
+    }
+    document.getElementById(`${name}Row`).innerHTML += `<div id="outCol">${outTotal}</div>`;     
+    for (let i=9; i<18 && i<array.length; i++) {
+        document.getElementById(`${name}Row`).innerHTML += `<div id="holeCol">${array[i]}</div>`; 
+        inTotal += array[i];
+        grandTotal += array[i];
+    }
+    document.getElementById(`${name}Row`).innerHTML += `<div id="inCol">${inTotal}</div>`;  
+    document.getElementById(`${name}Row`).innerHTML += `<div id="totalCol">${grandTotal}</div>`;  
+}
+
 function getCourses() {
+    document.getElementById('scoreCard').style.display = 'none';
     let xhttp = new XMLHttpRequest(); // new ajax request
     xhttp.onreadystatechange = function() {
         if(this.readyState == 4 && this.status == 200) {
             let allCourses = JSON.parse(this.responseText);
-            console.log(allCourses);
             for (let i=0; i<allCourses.courses.length; i++) {
                 document.getElementById('golfCourses').innerHTML += 
                     `<figure>
@@ -47,88 +96,56 @@ function getCourses() {
 }
 
 function loadCourse(golfId) {
+    document.getElementById('scoreCard').style.display = 'block';
     let xhttp = new XMLHttpRequest(); // new ajax request
     xhttp.onreadystatechange = function() {
         if(this.readyState == 4 && this.status == 200) {
-
             // load course name, address etc at the top of score card
             let courseAPI = JSON.parse(this.responseText); 
             let courseInfo = new GolfCourse(); 
-            document.getElementById('courseName').innerHTML = courseAPI.data.name;
-            document.getElementById('courseAddress').innerHTML = courseAPI.data.addr1;
+            document.getElementById('courseName').innerHTML = 
+                courseAPI.data.name;
+            document.getElementById('courseAddress').innerHTML = 
+                courseAPI.data.addr1;
             document.getElementById('courseCity').innerHTML = 
                 `${courseAPI.data.city}, ${courseAPI.data.stateOrProvince}  ${courseAPI.data.zipCode}`;
             document.getElementById('coursePhone').innerHTML = 
-                `${courseAPI.data.phone} <i class="fas fa-golf-ball"></i> ${courseAPI.data.website}`;  
-
+                courseAPI.data.phone;
+            document.getElementById('coursePhone').innerHTML =
+                courseAPI.data.website;       
             // load course information into GolfCourse class
             for (let i=0; i < courseAPI.data.holes.length; i++) {
-                let num = courseAPI.data.holes[i].teeBoxes[0].yards;
-                courseInfo.pro.push(num);
-            } 
-            for (let i=0; i < courseAPI.data.holes.length; i++) {
-                let num = courseAPI.data.holes[i].teeBoxes[1].yards;
-                courseInfo.champion.push(num);
-            } 
-            for (let i=0; i < courseAPI.data.holes.length; i++) {
-                let num = courseAPI.data.holes[i].teeBoxes[2].yards;
-                courseInfo.men.push(num);
-            } 
-            for (let i=0; i < courseAPI.data.holes.length; i++) {
-                let num = courseAPI.data.holes[i].teeBoxes[3].yards;
-                courseInfo.women.push(num);
-            } 
-            for (let i=0; i < courseAPI.data.holes.length; i++) {
-                let num = courseAPI.data.holes[i].teeBoxes[0].par;
-                courseInfo.par.push(num);
-            } 
-            for (let i=0; i < courseAPI.data.holes.length; i++) {
-                let num = courseAPI.data.holes[i].teeBoxes[0].hcp;
-                courseInfo.hcp.push(num);
-            } 
+                //info for Pro Golfer
+                courseInfo.pro.push(courseAPI.data.holes[i].teeBoxes[0].yards); 
+                //info for champion golfer
+                courseInfo.champion.push(courseAPI.data.holes[i].teeBoxes[1].yards); 
+                // info for men golfer
+                courseInfo.men.push(courseAPI.data.holes[i].teeBoxes[2].yards);
+                // infor for women golfer
+                courseInfo.women.push(courseAPI.data.holes[i].teeBoxes[3].yards);
+                // info for par
+                courseInfo.par.push(courseAPI.data.holes[i].teeBoxes[0].par);
+                // infor for hcp
+                courseInfo.hcp.push(courseAPI.data.holes[i].teeBoxes[0].hcp);
+            }
+            courseInfo.addHeadings();
             addRow('pro', courseInfo.pro);
-            addRow('champ', courseInfo.champion);
+            addRow('champion', courseInfo.champion);
             addRow('men', courseInfo.men);
             addRow('women', courseInfo.women);
             addRow('hcp', courseInfo.hcp);
             addRow('par', courseInfo.par);
-        }                         
-    };
-
-    xhttp.open('GET', `https://golf-courses-api.herokuapp.com/courses/${golfId}`, true);
-    xhttp.send();
-}
-
-function buildScoreCard(golfId) {
-
-    let xhttp = new XMLHttpRequest(); // new ajax request
-    xhttp.onreadystatechange = function() {
-        if(this.readyState == 4 && this.status == 200) {
-            myCourse = JSON.parse(this.responseText);
-
-            // Selected Golf Course information at Top of Score Card
-
-            document.getElementById('courseName').innerHTML = myCourse.data.name;
-            document.getElementById('courseAddress').innerHTML = myCourse.data.addr1;
-            document.getElementById('courseCity').innerHTML = 
-                `${myCourse.data.city}, ${myCourse.data.stateOrProvince}  ${myCourse.data.zipCode}`;
-            document.getElementById('coursePhone').innerHTML = 
-                `${myCourse.data.phone} <i class="fas fa-golf-ball"></i> ${myCourse.data.website}`;
         }
     };
+
     xhttp.open('GET', `https://golf-courses-api.herokuapp.com/courses/${golfId}`, true);
     xhttp.send();
 }
 
-function addRow(name, array) {
-    document.getElementById(`${name}Row`).innerHTML = `<div class="name">${name.toUpperCase()}</div>`;
-    for (let i=0; i<9; i++) {
-        document.getElementById(`${name}Row`).innerHTML += `<div class="hole${i}">${array[i]}</div>` 
+function toggle(el) {
+    if (document.getElementById(el).style.display == 'none') {
+        document.getElementById(el).style.display = '';
+    } else {
+        document.getElementById(el).style.display = 'none';
     }
-    document.getElementById(`${name}Row`).innerHTML += `<div class="outScore"></div>`     
-    for (let i=9; i<18; i++) {
-        document.getElementById(`${name}Row`).innerHTML += `<div class="hole${i}">${array[i]}</div>` 
-    }
-    document.getElementById(`${name}Row`).innerHTML += `<div class="inScore"></div>`  
-    document.getElementById(`${name}Row`).innerHTML += `<div class="totalScore"></div>`  
 }

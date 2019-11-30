@@ -22,35 +22,40 @@
             <div id="courseAddress"></div>
             <div id="courseCity"></div>
             <div id="coursePhone"></div>
-        </div>
+            <div id="courseWeb"></div>
+        </div>      
         <div id="cardOptions">
-            <div id="pro" onclick="rowDisplay('pro')"><i class="far fa-circle"></i> Pro</div>
-            <div id="champ" onclick="rowDisplay('champ')"><i class="far fa-circle"></i> Champion</div>
-            <div id="men" onclick="rowDisplay('men')"><i class="far fa-circle"></i> Men</div>
-            <div id="women" onclick="rowDisplay('women')"><i class="far fa-circle"></i> Women</div>
-            <div id="hcp" onclick="rowDisplay('hcp')"><i class="far fa-circle"></i> HCP</div>
+            <div id="proOption">
+                <input type="checkbox" onclick="toggle('proRow')" checked>Pro
+            </div>
+            <div id="champOption">
+                <input type="checkbox" onclick="toggle('championRow')" checked>Champion
+            </div>
+            <div id="menOption">
+                <input type="checkbox" onclick="toggle('menRow')" checked>Men
+            </div>
+            <div id="womenOption">
+                <input type="checkbox" onclick="toggle('womenRow')" checked>Women
+            </div>
+            <div id="hcpOption">
+                <input type="checkbox" onclick="toggle('hcpRow')" checked>HCP
+            </div>
         </div>
-        <div class="scoreRow" id="colHead"></div>
         <div id="playerLevels">
-            <div class="scoreRow" id="proRow">
-                <div class="name">Pro</div>
-            </div>
-            <div class="scoreRow" id="champRow">
-                <div class="name">Champion</div>
-            </div>
-            <div class="scoreRow" id="menRow">
-                <div class="name">Men</div>
-            </div>
-            <div class="scoreRow" id="womenRow">
-                <div class="name">Women</div>
-            </div>
-            <div class="scoreRow" id="hcpRow">
-                <div class="name">Handicap</div>
-            </div>
-            <div class="scoreRow" id="parRow">
-                <div class="name">Par</div>
-            </div>
-        </div>       
+            <div class="scoreRow" id="nameRow"></div>
+            <div class="scoreRow" id="proRow"></div>
+            <div class="scoreRow" id="championRow"></div>
+            <div class="scoreRow" id="menRow"></div>
+            <div class="scoreRow" id="womenRow"></div>
+            <div class="scoreRow" id="hcpRow"></div>
+            <div class="scoreRow" id="parRow"></div>
+        </div> 
+        <div id="golfGame">
+            <div class="scoreRow" id="player1"></div>
+            <div class="scoreRow" id="player2"></div>
+            <div class="scoreRow" id="player3"></div>
+            <div class="scoreRow" id="player4"></div>
+        </div>      
     </div>
 </body>
 </html>
